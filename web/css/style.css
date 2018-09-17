@@ -1,0 +1,24 @@
+.menu{
+    width: 250px; height: 100px; background-color: whitesmoke; box-shadow: 2px 2px 3px lightgrey;
+    padding:10% 20%; cursor: pointer;
+}
+a{ text-decoration: none !important; 
+   color: purple !important;
+}
+a:hover{ border-bottom: 2px solid grey;}
+
+
+.heading-style{
+    font-family: fantasy;
+    font-size: 60px;
+}
+.title{
+    display: inline-block;
+    font-size: 55px;
+    font-family: fantasy;
+    color:black;
+}
+span{
+  font-family: fantasy;  
+    
+}
