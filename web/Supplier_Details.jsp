@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="css/custom_supplier_detalis.css">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </head>
     <body>
         <nav class="nav bg-success">
@@ -24,6 +24,9 @@
             <div class="row">
                 <div class="col-2">
                     <div class="nav flex-column nav-pills"aria-orientation="vertical">
+                    <a class="nav-link "  href="Brand_Details.jsp" >Brand Details</a>
+                    <a class="nav-link "  href="Category_Details.jsp" >Category Details</a>
+                    <a class="nav-link "  href="Product_Details.jsp" >Product Details</a>
                     <a class="nav-link active"  href="Supplier_Details.jsp" >Supplier Details</a>
                     <a class="nav-link "  href="Purchase_Details.jsp" >Purchase Details</a>
                     <a class="nav-link "  href="Customer_Details.jsp" >Customer Details</a>
@@ -137,13 +140,14 @@
                                   <label>Credit Amount</label>
                                   <input class="form-control" name="supplier_credit_amount" placeholder="Enter the Credit Amount">
                               </div>
+                            </form>
+
                           
                       </div>
                       <div class="modal-footer">
                           <button type="reset" class="btn btn-secondary" >Reset</button>
                         <button type="button" class="btn btn-primary">Add Supplier</button>
-                        </form>
-                      </div>
+                          </div>
                     </div>
                   </div>
                 </div>

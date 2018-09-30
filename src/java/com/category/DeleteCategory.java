@@ -1,39 +1,37 @@
 
+package com.category;
+
+import com.dao.DbConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sun.security.provider.certpath.ResponderId;
 
-public class Login extends HttpServlet {
+@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
+public class DeleteCategory extends HttpServlet {
 
-  
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
          PrintWriter out = response.getWriter();
-         String name=request.getParameter("s1");
-         String pass=request.getParameter("s2");
-         try{
-           Class.forName("com.mysql.jdbc.Driver");
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/pharma","root","");
-           Statement stmt=con.createStatement();
-             ResultSet rs=stmt.executeQuery("select * from register where username='"+name+"' and password='"+pass+"'");
-           if(rs.next()){
-               response.sendRedirect("dashboard.jsp");
-               out.println("Login successful");
-           }else{
-               out.println("Login invalid");
-           }
-         }catch(Exception e){
-             out.println(e);
-         }
+        try {
+           String category_id = request.getParameter("cid");
+            Statement st = DbConnect.getConnection();
+            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
+            if(res>=0){
+                out.println("Category Deleted Added");
+            }else{
+                out.println("Error while Deleting");
+            }
+        }catch(Exception e){
+            out.print(e);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

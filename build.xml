@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="Pharma_C_and__F" default="default" basedir=".">
-    <description>Builds, tests, and runs the project Pharma C and  F.</description>
+<project name="pharma_c_and_f" default="default" basedir=".">
+    <description>Builds, tests, and runs the project pharma_c_and_f.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

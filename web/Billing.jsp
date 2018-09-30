@@ -24,6 +24,9 @@
             <div class="row">
                 <div class="col-2">
                     <div class="nav flex-column nav-pills"aria-orientation="vertical">
+                        <a class="nav-link "  href="Brand_Details.jsp" >Brand Details</a>
+                        <a class="nav-link "  href="Category_Details.jsp" >Category Details</a>
+                        <a class="nav-link "  href="Product_Details.jsp" >Product Details</a>
                         <a class="nav-link "  href="Supplier_Details.jsp" >Supplier Details</a>
                         <a class="nav-link "  href="Purchase_Details.jsp" >Purchase Details</a>
                         <a class="nav-link "  href="Customer_Details.jsp" >Customer Details</a>
