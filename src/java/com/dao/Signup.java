@@ -20,12 +20,11 @@ public class Signup extends HttpServlet {
          PrintWriter out = response.getWriter();
          String name=request.getParameter("uname");
          String pass=request.getParameter("pass");
+         String cpass=request.getParameter("cpass");
          String email=request.getParameter("email");
-         String phoneno=request.getParameter("phno");
-         String address=request.getParameter("address");
          try{
           Statement stmt=DbConnect.getConnection();
-           int res=stmt.executeUpdate("insert into register values('"+name+"','"+pass+"','"+email+"','"+phoneno+"','"+address+"') ");
+           int res=stmt.executeUpdate("insert into register values('"+name+"','"+pass+"','"+cpass+"','"+email+"') ");
            if(res>=1){out.println("Registered successful");
            }else{
                out.println("Registered failed");

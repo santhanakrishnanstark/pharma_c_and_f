@@ -1,36 +1,45 @@
 
-package com.category;
+package com.sales;
 
 import com.dao.DbConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
-@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
-public class DeleteCategory extends HttpServlet {
-
+@WebServlet(name = "Billing", urlPatterns = {"/Billing"})
+public class Billing extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-         PrintWriter out = response.getWriter();
-        try {
-           String category_id = request.getParameter("cid");
+        PrintWriter out = response.getWriter();
+        String array[] = new String[7];
+        JSONObject obj = new JSONObject();
+        try{
+            
+            int invno = Integer.parseInt(request.getParameter("invoiceno"));
             Statement st = DbConnect.getConnection();
-            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
-            if(res>=0){
-                out.println("Category Deleted ");
-            }else{
-                out.println("Error while Deleting");
+            ResultSet rs = st.executeQuery("select * from sales where invoice_no = '"+invno+"' ");
+            if(rs.next()){
+                array[0] = rs.getString(1); array[1] = rs.getString(2);
+                array[2] = rs.getString(3); array[3] = rs.getString(4);
+                array[4] = rs.getString(5); array[5] = rs.getString(6);
+                array[6] = rs.getString(7); 
             }
+            
+           for(int i=0; i<array.length; i++){
+               obj.put(String.valueOf(i), array[i]);
+            } 
+            out.print(obj);
         }catch(Exception e){
-            out.print(e);
+            System.out.println(e);
         }
     }
 

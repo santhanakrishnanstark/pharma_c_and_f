@@ -1,9 +1,10 @@
 
-package com.category;
+package com.sales;
 
 import com.dao.DbConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,26 +12,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
-public class DeleteCategory extends HttpServlet {
 
+@WebServlet(name = "BillingItems", urlPatterns = {"/BillingItems"})
+public class BillingItems extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-         PrintWriter out = response.getWriter();
-        try {
-           String category_id = request.getParameter("cid");
-            Statement st = DbConnect.getConnection();
-            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
-            if(res>=0){
-                out.println("Category Deleted ");
-            }else{
-                out.println("Error while Deleting");
+   
+        PrintWriter out = response.getWriter();
+        try{
+            int invno = Integer.parseInt(request.getParameter("ino"));
+             Statement st = DbConnect.getConnection();
+            ResultSet rs = st.executeQuery("select * from sales_details where invoice_no = '"+invno+"' ");
+            while(rs.next()){
+                out.print("<tr>");
+                out.print("<td> "+rs.getString(1)+"</td>");
+                out.print("<td> "+rs.getString(3)+"</td>");
+                out.print("<td> "+rs.getString(5)+"</td>");
+                out.print("<td> "+rs.getString(4)+"</td>");
+                out.print("</tr>");
             }
+            
         }catch(Exception e){
-            out.print(e);
+            System.out.println(e);
         }
     }
 

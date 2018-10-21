@@ -1,5 +1,5 @@
 
-package com.category;
+package com.supplier;
 
 import com.dao.DbConnect;
 import java.io.IOException;
@@ -11,24 +11,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
-public class DeleteCategory extends HttpServlet {
-
+@WebServlet(name = "AddSupplier", urlPatterns = {"/AddSupplier"})
+public class AddSupplier extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-         PrintWriter out = response.getWriter();
-        try {
-           String category_id = request.getParameter("cid");
+      PrintWriter out = response.getWriter();
+        String supplier_name = request.getParameter("suppliername");
+        String supplier_address = request.getParameter("supplieraddress");
+        String supplier_contact = request.getParameter("contact");
+        String supplier_gst = request.getParameter("gst");
+        String brand_id = request.getParameter("brand");
+        String category_id = request.getParameter("category");
+        try{
             Statement st = DbConnect.getConnection();
-            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
+            int res = st.executeUpdate("insert into supplier (supplier_name,supplier_address,supplier_contact,supplier_gst) values ('"+supplier_name+"','"+supplier_address+"','"+supplier_contact+"','"+supplier_gst+"') ");
             if(res>=0){
-                out.println("Category Deleted ");
+                out.println("New Supplier Added");
             }else{
-                out.println("Error while Deleting");
+                out.println("Error with Adding");
             }
+            
         }catch(Exception e){
             out.print(e);
         }

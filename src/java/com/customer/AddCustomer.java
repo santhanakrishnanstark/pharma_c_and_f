@@ -1,5 +1,5 @@
 
-package com.category;
+package com.customer;
 
 import com.dao.DbConnect;
 import java.io.IOException;
@@ -11,27 +11,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
-public class DeleteCategory extends HttpServlet {
 
+@WebServlet(name = "AddCustomer", urlPatterns = {"/AddCustomer"})
+public class AddCustomer extends HttpServlet {
 
+  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-         PrintWriter out = response.getWriter();
-        try {
-           String category_id = request.getParameter("cid");
+        PrintWriter out = response.getWriter(); System.out.println("comin");
+        String customer_name = request.getParameter("customername");
+        String customer_type = request.getParameter("customertype");
+        String customer_address = request.getParameter("customeraddress");
+        String customer_contact = request.getParameter("customercontact");
+        String customer_gst = request.getParameter("gst");
+    
+        try{
             Statement st = DbConnect.getConnection();
-            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
+            int res = st.executeUpdate("insert into customer (customer_name,customer_type,customer_address,customer_contact,customer_gst) values ('"+customer_name+"','"+customer_type+"','"+customer_address+"','"+customer_contact+"','"+customer_gst+"') ");
             if(res>=0){
-                out.println("Category Deleted ");
+                out.println("New Customer Added");
             }else{
-                out.println("Error while Deleting");
+                out.println("Error with Adding");
             }
+            
         }catch(Exception e){
             out.print(e);
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

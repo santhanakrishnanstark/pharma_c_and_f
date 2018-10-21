@@ -7,25 +7,25 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
        <link rel="stylesheet" href="css/custom_category_details.css">
     </head>
     <body>
-        <nav class="nav bg-success">
-                <h3>Pharma C & F</h3>
-        </nav>
+       <div class="col-md-6 mt-3 ml-3 header">
+                        <h1>Pharma C & F Agency</h1>  
+        </div>
         
          <div class="container-fluid p-0">
             <div class="row">
-               <div class="col-2">
+               <div class="col-2 mt-5">
                     <div class="nav flex-column nav-pills"aria-orientation="vertical">
                         <a class="nav-link"  href="Brand_Details.jsp" >Brand Details</a>
                         <a class="nav-link active"  href="Category_Details.jsp" >Category Details</a>
                         <a class="nav-link "  href="Product_Details.jsp" >Product Details</a>
                         <a class="nav-link "  href="Supplier_Details.jsp" >Supplier Details</a>
-                        <a class="nav-link "  href="Purchase_Details.jsp" >Purchase Details</a>
+                        <a class="nav-link "  href="Purchase.jsp" >Purchase</a>
                         <a class="nav-link "  href="Customer_Details.jsp" >Customer Details</a>
-                        <a class="nav-link "  href="Stock_Details.jsp" >Stock Details</a>
-                        <a class="nav-link "  href="Sales_Details.jsp" >Sales Details</a>
+                        <a class="nav-link "  href="Sales.jsp" >Sales Details</a>
                         <a class="nav-link "  href="Billing.jsp" >Billing </a>
                         <a class="nav-link "  href="#" >Report</a>
                     </div>

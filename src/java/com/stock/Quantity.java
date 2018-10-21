@@ -1,9 +1,11 @@
 
-package com.category;
+package com.stock;
 
 import com.dao.DbConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,27 +13,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
-public class DeleteCategory extends HttpServlet {
-
+@WebServlet(name = "Quantity", urlPatterns = {"/Quantity"})
+public class Quantity extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
          PrintWriter out = response.getWriter();
-        try {
-           String category_id = request.getParameter("cid");
-            Statement st = DbConnect.getConnection();
-            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
-            if(res>=0){
-                out.println("Category Deleted ");
-            }else{
-                out.println("Error while Deleting");
-            }
-        }catch(Exception e){
-            out.print(e);
-        }
+         int qtyofsales=0,qtyofpurchase=0;
+       try{  
+           String product_id= request.getParameter("p_id");
+           Statement st = DbConnect.getConnection();
+           ResultSet r2 = st.executeQuery("select sum(quantity) from stock where product_id='"+product_id+"' and entry_type='Purchase' ");
+           if(r2.next()){  qtyofpurchase  =r2.getInt(1); }
+           ResultSet r1 = st.executeQuery("select sum(quantity) from stock where product_id='"+product_id+"' and entry_type='Sales' ");
+           if(r1.next()){  qtyofsales  =r1.getInt(1); }
+           out.print(qtyofpurchase-qtyofsales);
+           
+       }catch(SQLException e){
+           out.println(e);
+       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

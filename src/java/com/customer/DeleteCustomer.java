@@ -1,5 +1,5 @@
 
-package com.category;
+package com.customer;
 
 import com.dao.DbConnect;
 import java.io.IOException;
@@ -11,21 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
-public class DeleteCategory extends HttpServlet {
-
+@WebServlet(name = "DeleteCustomer", urlPatterns = {"/DeleteCustomer"})
+public class DeleteCustomer extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-         PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();
         try {
-           String category_id = request.getParameter("cid");
+           String customer_no = request.getParameter("cid");
             Statement st = DbConnect.getConnection();
-            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
+            int res = st.executeUpdate("delete from customer where customer_no='"+customer_no+"' ");
             if(res>=0){
-                out.println("Category Deleted ");
+                out.println("Customer Deleted ");
             }else{
                 out.println("Error while Deleting");
             }

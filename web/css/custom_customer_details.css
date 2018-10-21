@@ -1,1 +1,3 @@
 
+#customertb tbody a{ cursor: pointer; color: white!important;}
+#customertb tbody a:hover{ border: none!important; }

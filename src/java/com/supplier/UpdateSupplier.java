@@ -1,9 +1,10 @@
 
-package com.category;
+package com.supplier;
 
 import com.dao.DbConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,25 +12,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
-public class DeleteCategory extends HttpServlet {
-
+@WebServlet(name = "UpdateSupplier", urlPatterns = {"/UpdateSupplier"})
+public class UpdateSupplier extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
          PrintWriter out = response.getWriter();
-        try {
-           String category_id = request.getParameter("cid");
-            Statement st = DbConnect.getConnection();
-            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
+        try { System.out.println("comi");
+            String supplier_no = request.getParameter("supplierno");
+           String supplier_name = request.getParameter("suppliername");
+           String supplier_address = request.getParameter("supplieraddress");
+           String supplier_contact = request.getParameter("contact");
+           String supplier_gst = request.getParameter("gst");
+            Statement st = DbConnect.getConnection(); 
+            int res = st.executeUpdate("update supplier set supplier_name='"+supplier_name+"',supplier_address='"+supplier_address+"',supplier_contact='"+supplier_contact+"',supplier_gst='"+supplier_gst+"' where supplier_no='"+supplier_no+"' ");
             if(res>=0){
-                out.println("Category Deleted ");
+                out.println("Supplier Updated Successfully");
             }else{
-                out.println("Error while Deleting");
+                out.println("Error while Updating");
             }
-        }catch(Exception e){
+        }catch(SQLException e){
             out.print(e);
         }
     }

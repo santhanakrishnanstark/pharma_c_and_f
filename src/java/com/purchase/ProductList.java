@@ -1,9 +1,11 @@
 
-package com.category;
+package com.purchase;
 
 import com.dao.DbConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,27 +13,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
-public class DeleteCategory extends HttpServlet {
+@WebServlet(name = "ProductList", urlPatterns = {"/ProductList"})
+public class ProductList extends HttpServlet {
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+    
          PrintWriter out = response.getWriter();
-        try {
-           String category_id = request.getParameter("cid");
-            Statement st = DbConnect.getConnection();
-            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
-            if(res>=0){
-                out.println("Category Deleted ");
-            }else{
-                out.println("Error while Deleting");
-            }
-        }catch(Exception e){
-            out.print(e);
-        }
+       try{ 
+           Statement st = DbConnect.getConnection();
+           ResultSet rs = st.executeQuery("select * from product");
+           while(rs.next()){  System.out.println(rs.getString("product_name"));
+               out.println("<option value='"+rs.getInt("product_id")+"'>"+rs.getString("product_name")+"</option>");
+           }
+           
+       }catch(SQLException e){
+           out.println(e);
+       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

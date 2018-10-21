@@ -1,9 +1,10 @@
 
-package com.category;
+package com.sales;
 
 import com.dao.DbConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,24 +12,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteCategory", urlPatterns = {"/DeleteCategory"})
-public class DeleteCategory extends HttpServlet {
-
+@WebServlet(name = "DeleteSales", urlPatterns = {"/DeleteSales"})
+public class DeleteSales extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-         PrintWriter out = response.getWriter();
-        try {
-           String category_id = request.getParameter("cid");
+           PrintWriter out = response.getWriter();
+        try { 
+           String bill_no = request.getParameter("sid"); 
             Statement st = DbConnect.getConnection();
-            int res = st.executeUpdate("delete from category where category_id='"+category_id+"' ");
-            if(res>=0){
-                out.println("Category Deleted ");
+             //ResultSet rs = st.executeQuery("select invoice_no from sales where bill_no = "+bill_no+" ");
+             //if(rs.next()){ invoice_no = rs.getString("invoice_no");  } 
+            int res1 = st.executeUpdate("delete from sales_details where invoice_no='"+bill_no+"' ");
+            int res = st.executeUpdate("delete from sales where invoice_no='"+bill_no+"' ");
+            int res2 = st.executeUpdate("delete from stock where invoice_no='"+bill_no+"' ");
+            if(res>=0 && res1>=0 && res2>=0){
+                out.println("Sales Deleted ");
             }else{
                 out.println("Error while Deleting");
-            }
+            } 
         }catch(Exception e){
             out.print(e);
         }

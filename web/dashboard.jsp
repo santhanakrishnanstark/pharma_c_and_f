@@ -8,6 +8,7 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
         
     </head>
     <body>
@@ -17,45 +18,44 @@
                 <div class="col-md-3 ml-5 mt-5">
                     <img src="pharma logo.jpg" class="d-inline" width="150" height="130" alt="center">
                 </div>
-                  <div class="col-md-6 text-center mr-2"><span class="title mt-5 ,mr-1">PHARMA C AND F AGENCY</span></div>
-                    <div class="col-md-3"></div>
+                  <div class="col-md-6 mt-5 ml-5 header">
+                        <h1>Pharma C & F Agency</h1>  
+                      </div>
+                <div class="col-md-3"></div>
             </div>
         </div>    
         <div class="container">
             <div class="row mt-3">
                 <div class="col-sm-4 mt-3">
                     <div class="menu">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addbrand">
-                            Add Brand </button>
+                        <a href="Brand_Details.jsp">Brand</a>
                     </div>
                 </div>
                 <div class="col-sm-4 mt-3">
                      <div class="menu">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcategory">
-                            Add Category </button>
+                   <a href="Category_Details.jsp">Category</a>
                      </div>
                 </div>
                 <div class="col-sm-4 mt-3">
                      <div class="menu">
-                     <button type="button" id="addpro" class="btn btn-primary" data-toggle="modal" data-target="#addproduct">
-                            Add Product </button>
-                     </div>
+                     <a href="Product_Details.jsp">Product</a>
                 </div>
+            </div>
             </div>
             <div class="row mt-3">
                 <div class="col-sm-4 mt-3">
-                    <div class="menu"> <a href="Supplier_Details.jsp">Supplier details</a></div>
+                    <div class="menu"> <a href="Supplier_Details.jsp">Supplier_Details</a></div>
                 </div>
                 <div class="col-sm-4 mt-3">
                     <div class="menu"> <a href="Customer_Details.jsp">Customer_Details </a> </div>
                 </div>
                 <div class="col-sm-4 mt-3">
-                    <div class="menu"> <a href="Purchase_Details.jsp">Purchase Details </a> </div>
+                    <div class="menu"> <a href="Purchase.jsp">Purchase </a> </div>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-sm-4 mt-3">
-                    <div class="menu"> <a href="#">Sales </a> </div>
+                    <div class="menu"> <a href="Sales.jsp">Sales </a> </div>
                 </div>
                 <div class="col-sm-4 mt-3">
                     <div class="menu"> <a href="#">Billing </a> </div>

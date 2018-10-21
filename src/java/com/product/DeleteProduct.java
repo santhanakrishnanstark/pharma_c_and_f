@@ -25,7 +25,7 @@ public class DeleteProduct extends HttpServlet {
             Statement st = DbConnect.getConnection();
             int res = st.executeUpdate("delete from product where product_id='"+product_id+"' ");
             if(res>=0){
-                out.println("Category Deleted Added");
+                out.println("Product Deleted ");
             }else{
                 out.println("Error while Deleting");
             }

@@ -1,10 +1,8 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 10 Sep, 2018, 9:49:45 AM
-    Author     : settu
-*/
-
+.bill{ border:1px solid grey; box-shadow:2px 2px 3px gray; margin-bottom: 5%; }
+.invoice{ border:0px solid grey; }
+.title{ font-family: monospace !important; }
+.ctitle{ border:1px solid grey; padding-top:15px; }
+.cright{ border:1px solid grey; padding-top:15px; }
+.trow{ border-bottom:1px solid grey; }
+#signspace{ padding:20px; }
+.footer{ padding:5%; border-top: 1px solid grey; }

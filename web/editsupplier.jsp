@@ -10,8 +10,8 @@
         <title>Edit Product</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
        <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
-       <link rel="stylesheet" href="css/custom_editproduct_details.css">
+        <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+       <link rel="stylesheet" href="css/custom_supplier_details.css">
     </head>
     <body>
         <div class="col-md-6 mt-3 ml-3 header">
@@ -24,8 +24,8 @@
                     <div class="nav flex-column nav-pills"aria-orientation="vertical">
                         <a class="nav-link"  href="Brand_Details.jsp" >Brand Details</a>
                         <a class="nav-link"  href="Category_Details.jsp" >Category Details</a>
-                        <a class="nav-link active"  href="Product_Details.jsp" >Product Details</a>
-                        <a class="nav-link "  href="Supplier_Details.jsp" >Supplier Details</a>
+                        <a class="nav-link "  href="Product_Details.jsp" >Product Details</a>
+                        <a class="nav-link active"  href="Supplier_Details.jsp" >Supplier Details</a>
                         <a class="nav-link "  href="Purchase.jsp" >Purchase</a>
                         <a class="nav-link "  href="Customer_Details.jsp" >Customer Details</a>
                         <a class="nav-link "  href="Sales.jsp" >Sales Details</a>
@@ -36,42 +36,42 @@
                 <div class="col-2"></div>
                     <div class="col-6">
                     <div class="container mt-5">
-                        <h2>Edit Product</h2>
+                        <h2>Edit Supplier</h2>
                         <%
-                            String product_id = request.getParameter("id"); 
-                            String product_name="" ,product_price="",brand_id="",category_id="" ;
+                            String supplier_no = request.getParameter("id"); 
+                            String supplier_name="" ,supplier_address="",supplier_contact="", supplier_gst="" ;
                             Statement st = DbConnect.getConnection();
-                            ResultSet rs = st.executeQuery("select * from product where product_id='"+product_id+"' ");
+                            ResultSet rs = st.executeQuery("select * from supplier where supplier_no='"+supplier_no+"' ");
                             if(rs.next()){
-                                product_name = rs.getString("product_name");
-                                product_price = rs.getString("product_price");
-                                brand_id = rs.getString("brand_id");
-                                category_id = rs.getString("category_id");
+                                supplier_name = rs.getString("supplier_name");
+                                supplier_address = rs.getString("supplier_address");
+                                supplier_contact = rs.getString("supplier_contact");
+                                supplier_gst = rs.getString("supplier_gst");
                             }
                         %>
-                        <form id="editproductfrm">
+                        <form id="editsupplierfrm">
                             <div class="form-group">    
-                              <label for="productid">Product ID</label>
-                              <input type="text" class="form-control" name="productid" value="<%=product_id%> " readonly>
+                              <label for="supplierno">Supplier No</label>
+                              <input type="text" class="form-control" name="supplierno" value="<%=supplier_no%> " readonly>
                             </div>
                             <div class="form-group">
-                              <label for="productname">product Name</label>
-                              <input type="text" class="form-control" name="productname" value="<%=product_name%>">
+                              <label for="suppliername">Supplier Name</label>
+                              <input type="text" class="form-control" name="suppliername" value="<%=supplier_name%>">
                             </div>
                              <div class="form-group">
-                              <label for="productname">product Price</label>
-                              <input type="text" class="form-control" name="productprice" value="<%=product_price%>">
+                              <label for="supplieraddress">Supplier Address</label>
+                              <input type="text" class="form-control" name="supplieraddress" value="<%=supplier_address%>">
                             </div>
                             <div class="form-group">
-                              <label for="brandid">Brand ID</label>
-                              <input type="text" class="form-control" name="brandid" value="<%=brand_id%>" readonly>
+                              <label for="suppliercontact">Supplier Contact</label>
+                              <input type="text" class="form-control" name="contact" value="<%=supplier_contact%>" >
                             </div>
                             <div class="form-group">
-                              <label for="productid">Category ID</label>
-                              <input type="text" class="form-control" name="categoryid" value="<%=category_id%> " readonly>
+                              <label for="suppliergst">Supplier GST</label>
+                              <input type="text" class="form-control" name="gst" value="<%=supplier_gst%> " >
                             </div>
-                            <button type="button" id="editproductbtn" class="btn btn-primary">Update</button>
-                            <a href="Product_Details.jsp"><button type="button" class="btn btn-primary">Back</button></a>
+                            <button type="button" id="editsupplierbtn" class="btn btn-primary">Update</button>
+                            <a href="Supplier_Details.jsp"><button type="button" class="btn btn-primary">Back</button></a>
                           </form>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="js/product.js"></script>               
+        <script src="js/supplier.js"></script>               
              
     </body>
 </html>
