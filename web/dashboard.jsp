@@ -15,13 +15,14 @@
         <div class="container-fluid"> 
         
             <div class="row">
-                <div class="col-md-3 ml-5 mt-5">
+                <div class="col-md-3 mt-5">
                     <img src="pharma logo.jpg" class="d-inline" width="150" height="130" alt="center">
                 </div>
-                  <div class="col-md-6 mt-5 ml-5 header">
-                        <h1>Pharma C & F Agency</h1>  
+                  <div class="col-md-6 mt-5 header">
+                        <h1>Pharma C & F Agency</h1> 
+                        
                       </div>
-                <div class="col-md-3"></div>
+                <div class="col-md-3 mt-5"> <button id="logoutbtn" class="btn btn-danger">Logout</button></div>
             </div>
         </div>    
         <div class="container">
@@ -177,6 +178,7 @@
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="js/dashboard.js"></script>  
+        <script src="js/dashboard.js"></script> 
+        <script src="js/index.js"></script>
     </body>
 </html>
