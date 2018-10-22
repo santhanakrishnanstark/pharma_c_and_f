@@ -25,7 +25,6 @@ public class PurchaseReport extends HttpServlet {
              String fromdate = request.getParameter("fdate");
              String todate = request.getParameter("tdate");
             Statement st = DbConnect.getConnection();
-             System.out.println(fromdate);
             ResultSet rs = st.executeQuery("SELECT bill_no p,bill_date p,invoice_no p,invoice_date p,gst p, supplier_name c from  supplier as c, purchase as p WHERE c.supplier_no = p.supplier_no AND  invoice_date BETWEEN '"+fromdate+"' AND LAST_day('"+todate+"')");
             out.print("<tr>");
                 out.print("<th>Bill No</th>");

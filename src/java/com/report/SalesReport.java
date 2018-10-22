@@ -24,7 +24,6 @@ public class SalesReport extends HttpServlet {
              String fromdate = request.getParameter("fdate");
              String todate = request.getParameter("tdate");
             Statement st = DbConnect.getConnection();
-             System.out.println(fromdate);
             ResultSet rs = st.executeQuery("SELECT invoice_no s,invoice_date s,sub_total s,gst s,discount s,net_total, customer_name c from  sales as s, customer as c WHERE c.customer_no = s.customer_no AND  invoice_date BETWEEN '"+fromdate+"' AND LAST_day('"+todate+"')");
             out.print("<tr>");
                 out.print("<th>Invoice No</th>");
