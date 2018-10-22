@@ -36,19 +36,20 @@ public class StoreSales extends HttpServlet {
             System.out.println("Row : "+row+" Col: "+col);
             for(int i=0; i<=row; i++){
                 StringBuilder query= new StringBuilder();
-                query.append("insert into sales_details(product_id,product_name,product_price,quantity,invoice_no) values ");
-                int id=0,price=0,qtys=0;
+                query.append("insert into sales_details(product_id,product_name,product_price,quantity,total,invoice_no) values ");
+                int id=0,price=0,qtys=0,total=0;
                 String records[] =  request.getParameterValues("precord["+i+"][]");
-                for(int j=0; j<=3; j++){
+                for(int j=0; j<=4; j++){
                     if(j==0){  id=Integer.parseInt(records[j]); }
                     if(j==1){  price=Integer.parseInt(records[j]); }
                     if(j==3){ qtys = Integer.parseInt(records[j]); }
+                    if(j==4){ total = Integer.parseInt(records[j]); }
                 }
                 String pname=null;
                 ResultSet rs = st.executeQuery("select product_name from product where product_id='"+id+"'");
                 if(rs.next()){ pname= rs.getString("product_name"); }
                 String product_name = pname;
-                query.append("("+id+",'"+pname+"',"+price+","+qtys+","+bill_no+") ");
+                query.append("("+id+",'"+pname+"',"+price+","+qtys+","+total+","+bill_no+") ");
                 System.out.println(query.toString());
                 int rss = st.executeUpdate(query.toString());
                 int stockres = st.executeUpdate("INSERT INTO stock( entry_type, invoice_no, invoice_date, product_id, quantity) VALUES ('Sales','"+bill_no+"','"+bill_date+"','"+id+"','"+qtys+"') ");

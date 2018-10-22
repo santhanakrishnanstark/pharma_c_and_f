@@ -1,5 +1,5 @@
 
-package com.sales;
+package com.report;
 
 import com.dao.DbConnect;
 import java.io.IOException;
@@ -12,32 +12,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(name = "PurchaseReport", urlPatterns = {"/PurchaseReport"})
+public class PurchaseReport extends HttpServlet {
 
-@WebServlet(name = "BillingItems", urlPatterns = {"/BillingItems"})
-public class BillingItems extends HttpServlet {
-
+  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-   
+ 
         PrintWriter out = response.getWriter();
-        try{
-            int invno = Integer.parseInt(request.getParameter("ino"));
-             Statement st = DbConnect.getConnection();
-            ResultSet rs = st.executeQuery("select * from sales_details where invoice_no = '"+invno+"' ");
+         try{ 
+             String fromdate = request.getParameter("fdate");
+             String todate = request.getParameter("tdate");
+            Statement st = DbConnect.getConnection();
+             System.out.println(fromdate);
+            ResultSet rs = st.executeQuery("SELECT bill_no p,bill_date p,invoice_no p,invoice_date p,gst p, supplier_name c from  supplier as c, purchase as p WHERE c.supplier_no = p.supplier_no AND  invoice_date BETWEEN '"+fromdate+"' AND LAST_day('"+todate+"')");
+            out.print("<tr>");
+                out.print("<th>Bill No</th>");
+                out.print("<th>Bill Date</th>");
+                out.print("<th>Supplier Name</th>");
+                out.print("<th>Invoice No</th>");
+                out.print("<th>Invoice Date</th>");
+                out.print("<th>GST</th>");
+                out.print("</tr>");
             while(rs.next()){
                 out.print("<tr>");
-                out.print("<td> "+rs.getString(1)+"</td>");
-                out.print("<td> "+rs.getString(3)+"</td>");
-                out.print("<td> "+rs.getString(5)+"</td>");
-                out.print("<td> "+rs.getString(4)+"</td>");
-                out.print("<td> "+rs.getString(6)+"</td>");
+                out.print("<td>"+rs.getString(1)+"</td>");
+                out.print("<td>"+rs.getString(2)+"</td>");
+                out.print("<td>"+rs.getString(6)+"</td>");
+                out.print("<td>"+rs.getString(3)+"</td>");
+                out.print("<td>"+rs.getString(4)+"</td>");
+                out.print("<td>"+rs.getString(5)+"</td>");
                 out.print("</tr>");
             }
-            
-        }catch(Exception e){
-            System.out.println(e);
-        }
+         }catch(Exception e){
+             System.out.println(e);
+         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

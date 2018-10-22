@@ -1,7 +1,11 @@
 let invoice_no,invoice_date,buyer_name,buyer_address,sub_total,gst,discount,net_total;
 $(document).ready(function(){
     $("#billbtn").bind("click",getData);
+    $("#printbtn").bind("click",startPrint);
 });
+function startPrint(){
+    window.print();
+}
 function getData(){
    let invno = $("#invno").val();
     $.ajax({
@@ -19,6 +23,7 @@ function getData(){
                  if(i==4){ $("#gst").text(result[i]); }
                  if(i==5){ $("#discount").text(result[i]); }
                  if(i==6){ $("#total_amount").text(result[i]); }
+                 if(i==7){ $("#buyer_address").text(result[i]); }
              }   
         }
     });

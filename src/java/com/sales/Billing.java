@@ -20,10 +20,10 @@ public class Billing extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String array[] = new String[7];
+        String array[] = new String[8];
         JSONObject obj = new JSONObject();
         try{
-            
+            String name,address;
             int invno = Integer.parseInt(request.getParameter("invoiceno"));
             Statement st = DbConnect.getConnection();
             ResultSet rs = st.executeQuery("select * from sales where invoice_no = '"+invno+"' ");
@@ -32,6 +32,13 @@ public class Billing extends HttpServlet {
                 array[2] = rs.getString(3); array[3] = rs.getString(4);
                 array[4] = rs.getString(5); array[5] = rs.getString(6);
                 array[6] = rs.getString(7); 
+            }
+            ResultSet rs1 = st.executeQuery("select * from customer where customer_no='"+array[2]+"' ");
+            if(rs1.next()){
+                name = rs1.getString("customer_name");
+                address = rs1.getString("customer_address");
+                array[2] = name;
+                array[7] = address;
             }
             
            for(int i=0; i<array.length; i++){

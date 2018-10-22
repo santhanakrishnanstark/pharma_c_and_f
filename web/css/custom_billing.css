@@ -6,3 +6,14 @@
 .trow{ border-bottom:1px solid grey; }
 #signspace{ padding:20px; }
 .footer{ padding:5%; border-top: 1px solid grey; }
+
+@media print{
+    #billpaper{
+        position: absolute;
+        left:-30% !important;
+        top:-10% !important;
+    }
+    #billhead{ display: none; }
+    #billtitle { display: none; }
+    #sidebar { display: none; }
+}

@@ -67,6 +67,7 @@
                                                 <th>Product Price</th>
                                                 <th>Available Quantity</th>
                                                 <th>Quantity</th>
+                                                <th>Total</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody">

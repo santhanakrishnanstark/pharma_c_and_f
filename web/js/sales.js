@@ -31,6 +31,7 @@ function appendEntry(){
                <td><input type='text' class='form-control "+tlen+" '></td> \n\
                <td><input type='text' class='form-control "+tlen+" ' readonly></td> \n\
                <td><input type='text' onkeyup='updateTotal(this)' class='form-control "+tlen+" '></td>  \n\
+               <td><input type='text' class='form-control "+tlen+" ' readonly></td>  \n\
                </tr>";
        $.ajax({
         url:'ProductList',
@@ -77,6 +78,9 @@ function updateTotal(dis){
     let p_price = $("#"+product_price_id).val(); 
      sub_total += Number(qty) * Number(p_price); 
      gstotal = sub_total + Number(sub_total)*0.18;
+    let total =  Number(qty) * Number(p_price); 
+    let total_id = first+Number(Number(second)+1);
+    $("#"+total_id).val(total);
      $("#discount").val(Number("0"));
      $("#subtotal").val(sub_total); $("#gst").val(gstotal);
      $("#netotal").val(gstotal);
@@ -91,7 +95,7 @@ function addSales(){
     $("#tbody").find("tr").each(function( index ){
         count = index++;
     });
-    let row = count , col=3;
+    let row = count , col=4;
     var q = new Array();
 	for(let i=0; i<=row; i++){
 		q[i] = new Array();

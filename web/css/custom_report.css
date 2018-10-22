@@ -1,0 +1,13 @@
+
+@media print{
+    #report{
+        position: absolute !important;width: 120% !important;
+        left:-20% !important;
+        top:25% !important; 
+    }
+   #billhead{ display: none; }
+    #billtitle { display: none; }
+    #sidebar { display: none; }
+   
+}
+

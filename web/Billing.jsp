@@ -18,7 +18,7 @@
          <div class="container-fluid p-0">
             <div class="row">
                 <div class="col-2 mt-5">
-                    <div class="nav flex-column nav-pills"aria-orientation="vertical">
+                    <div id="sidebar" class="nav flex-column nav-pills"aria-orientation="vertical">
                         <a class="nav-link "  href="Brand_Details.jsp" >Brand Details</a>
                         <a class="nav-link "  href="Category_Details.jsp" >Category Details</a>
                         <a class="nav-link "  href="Product_Details.jsp" >Product Details</a>
@@ -32,20 +32,24 @@
                 </div>     
                 <div class="col-1"></div>
                     <div class="col-8">
-                        <h2 class="text-center mt-5">Bill Entry </h2>
-                        <div class="viewbill  p-4">
+                        <h2 id="billtitle" class="text-center mt-5">Bill Entry </h2>
+                        <div id="billhead" class="viewbill  p-4">
                             <div class="form-row">
-                                <div class="col-4">
+                                <div class="col-2">
                                 </div>
+                                <div class="col-2"><h6>Invoice No:</h6></div>
                                 <div class="col-4">
                                     <input type="text" class="form-control" id="invno">
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <input type="button" value="VIEW BILL" class="btn btn-secondary" id="billbtn">
+                                </div>
+                                 <div class="col-1">
+                                    <input type="button" value="Print" class="btn btn-secondary" id="printbtn">
                                 </div>
                             </div>
                         </div>
-                        <div class="container bill mt-4">
+                        <div class="container bill mt-4" id="billpaper">
                             <div class="invoice text-center">
                               <h4>INVOICE</h4>
                             </div>
@@ -135,7 +139,7 @@
                           <div class="row">
                             <div class="col-6">
                               <h5>Declaration :</h5>
-                              <p>slh;lsslslslkslks</p>
+                              <p>We declare that this invoice shows the actual price of the goods. </p>
                             </div>
                             <div class="col-6 text-center">
                               <h6>For Pharma C & F Agency</h6>
